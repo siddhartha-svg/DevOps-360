@@ -74,7 +74,7 @@ Based on the image you uploaded, here is the Linux file system hierarchy present
 * **`/srv`:** Contains data for services offered by the system (e.g., web server data).
 ```
 
-
+```
 ### 🌳 Root and Core Directories
 
 -   **`/`**: The **root directory**. The top of the file system tree. Everything on a Linux system resides under this directory.
@@ -112,3 +112,4 @@ Based on the image you uploaded, here is the Linux file system hierarchy present
 -   **`/srv`**: Contains data for **services** provided by the system, such as web server data.
 -   **`/run`**: A temporary file system for **runtime data** that's cleared at boot. Contains PID files and sockets.
 -   **`/lost+found`**: Contains **recovered file fragments** after a file system check. Found on each partition.
+```
