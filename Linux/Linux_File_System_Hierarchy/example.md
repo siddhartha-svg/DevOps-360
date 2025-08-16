@@ -1,103 +1,290 @@
+
+
+### 🌳 Linux File System Hierarchy
+
+This guide explains the purpose of key directories in the Linux file system and provides examples of the kind of files or subdirectories you would find in each.
+
 -----
-
-### 📂 Real-World Linux File System Examples
-
-This guide uses command-line examples to show you what you might find inside common Linux directories on a server named **`app-server-01`**. The user in this scenario is **`siddhu`**.
 
 ### `/` (Root Directory)
 
-The root directory is the foundation of the file system. Listing its contents shows you the top-level structure.
+The top-level directory from which all other directories and files branch. It is the starting point of the entire file system.
+
+**Example Output:**
 
 ```bash
-siddhu@app-server-01:/$ ls
-bin   dev  home  lib64       mnt  proc  run   srv  tmp  var
-boot  etc  lib   media  opt  root  sbin  sys  usr
+$ ls /
+bin   boot  dev  etc  home  lib   media  mnt  opt   proc  root  run   sbin  srv  sys  tmp  usr  var
 ```
 
-### `/home` (User Home Directories)
+-----
 
-The `/home` directory holds personal directories for all non-root users. Here, we see home directories for `siddhu` and other users on the system.
+### `/boot` (Boot Loader Files)
+
+Contains files essential for the system to boot, including the Linux kernel and the GRUB bootloader configuration.
+
+**Example Output:**
 
 ```bash
-siddhu@app-server-01:/home $ ls -lrt
-total 8
-drwxr-xr-x  2 siddhu     siddhu     4096 Apr 16 2025 siddhu
-drwxr-xr-x  2 bob       bob        4096 Apr 16 2025 bob
-drwxr-xr-x  3 appuser  appuser    4096 May 7  2025 appuser
-drwxr-xr-x  2 sysadmin sysadmin   4096 Jun 4  2025 sysadmin
+$ ls /boot/
+config-5.15.0-78-generic  grub/  initrd.img-5.15.0-78-generic  System.map-5.15.0-78-generic  vmlinuz-5.15.0-78-generic
 ```
 
-This output shows the directory permissions, owner, group, size, and last modification date. For example, `siddhu` owns his own directory and can read, write, and execute files within it. Other users cannot access his files.
+-----
 
 ### `/etc` (Configuration Files)
 
-The `/etc` directory is for system-wide configuration. It's the central place for controlling how the system and its services behave.
+Holds system-wide configuration files and scripts. These are plain text files that control how the system and its services behave.
+
+**Example Output:**
 
 ```bash
-siddhu@app-server-01:/etc $ ls
-apache2/      bash.bashrc  cron.d/     fstab       hosts    nginx/    os-release
+$ ls /etc/
+apache2/  bash.bashrc  crontab  fstab  hosts  nginx/  os-release  passwd  resolv.conf
 ```
 
-You can view the contents of a configuration file like `/etc/os-release` to get system information:
+**Example File Content (`/etc/passwd`):**
 
 ```bash
-siddhu@app-server-01:/etc $ cat /etc/os-release
-NAME="Ubuntu"
-VERSION="22.04.4 LTS (Jammy Jellyfish)"
-ID=ubuntu
-VERSION_ID="22.04"
-VERSION_CODENAME=jammy
-UBUNTU_CODENAME=jammy
+$ cat /etc/passwd | head -n 2
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 ```
 
-### `/var` (Variable Data)
+-----
 
-The `/var` directory stores data that changes frequently, with logs being one of the most common types.
+### `/home` (User Home Directories)
+
+Houses directories for individual users. Each user has a dedicated folder for their personal files, preferences, and configurations.
+
+**Example Output:**
 
 ```bash
-siddhu@app-server-01:/var $ ls -l /var/log/
-total 165380
--rw-r--r-- 1 root root  1147047 Aug 15 10:45 auth.log
--rw-r--r-- 1 root root  2048995 Jul 28 11:21 boot.log
--rw-r--r-- 1 root root  3845667 Aug 16 10:45 dmesg
-...
+$ ls -l /home/
+total 8
+drwxr-xr-x 2 john john 4096 Aug 16 2025 john
+drwxr-xr-x 2 mary mary 4096 Aug 16 2025 mary
 ```
 
-This shows the log files for system authentication, boot processes, and kernel messages, which are essential for troubleshooting.
+-----
 
-### `/bin` and `/sbin` (Essential Binaries)
+### `/root` (Root Home Directory)
 
-These directories contain the core executables required to operate the system.
+The home directory of the **root** user. Only the root user has access to this directory.
+
+**Example Output:**
 
 ```bash
-siddhu@app-server-01:/$ ls /bin/
-arch    bunzip2  cp    dash  echo   false   ln   mkdir  mv   ps   rm   sync   uncompress
-...
+# This can only be seen with root privileges
+$ sudo ls /root/
+.bash_history  .profile  .ssh/
 ```
 
-These are the fundamental commands all users need. Binaries in `/sbin`, such as `reboot` or `fdisk`, are for administrative tasks and typically require root privileges to run.
+-----
 
-### `/proc` (Virtual File System)
+### `/opt` (Third-Party Applications)
 
-The `/proc` directory is a **virtual file system** that provides a real-time view of running processes and kernel data. It doesn't contain physical files on a disk.
+Contains add-on software packages and third-party applications that are not part of the default system.
+
+**Example Output:**
 
 ```bash
-siddhu@app-server-01:/$ ls /proc/ | head -n 15
-1
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-2
-20
-21
-22
+$ ls /opt/
+google/  microsoft/
 ```
 
-The numbered directories correspond to the **Process IDs (PIDs)** of currently running processes. You can inspect files within these directories to get details about each process.
+-----
+
+### `/dev` (Device Files)
+
+Contains special files that represent hardware devices like disks, terminals, and USB devices. These are not ordinary files; they are interfaces to the hardware.
+
+**Example Output:**
+
+```bash
+$ ls /dev/
+null  sda  sda1  sr0  ttyS0  zero
+```
+
+-----
+
+### `/var` (Variable Files)
+
+Stores files that are expected to grow in size, such as logs, caches, mail, and temporary files. This data is dynamic and changes during system operation.
+
+**Example Output:**
+
+```bash
+$ ls /var/
+cache/  lib/  local/  lock/  log/  mail/  opt/  run/  spool/  tmp/
+```
+
+**Example File Content (`/var/log/syslog`):**
+
+```bash
+$ tail /var/log/syslog
+Aug 16 09:30:01 server kernel: [12345.6789] usb 1-1: new full-speed USB device number 2 using ohci_hcd
+Aug 16 09:30:02 server kernel: [12345.9876] input: Logitech USB-HID as /devices/pci0000:00/0000:00:1d.0/usb1/1-1/1-1:1.0/0003:046D:C077.0001/input/input16
+```
+
+-----
+
+### `/bin` (User Binaries)
+
+Contains essential user command binaries required for basic system operation, available to all users.
+
+**Example Output:**
+
+```bash
+$ ls /bin/
+bash  cat  chmod  cp  date  df  echo  grep  ls  mkdir  mv  ps  pwd  rm  tar
+```
+
+-----
+
+### `/sbin` (System Binaries)
+
+Stores essential system binaries used for system administration tasks. These commands often require root privileges.
+
+**Example Output:**
+
+```bash
+$ ls /sbin/
+fdisk  fsck  ifconfig  iptables  mkfs  reboot  route  shutdown
+```
+
+-----
+
+### `/usr` (User Applications)
+
+The largest directory, containing user applications, libraries, documentation, and source code. This is where most installed software resides.
+
+**Example Output:**
+
+```bash
+$ ls /usr/
+bin/  games/  include/  lib/  local/  sbin/  share/  src/
+```
+
+-----
+
+### `/proc` (Process Information)
+
+A **virtual file system** that provides a view of kernel and process information. Its contents are not stored on disk but are generated by the kernel in real time.
+
+**Example Output:**
+
+```bash
+$ ls /proc/
+1/  2/  3/  cpuinfo  meminfo  mounts  modules  uptime
+```
+
+**Example File Content (`/proc/cpuinfo`):**
+
+```bash
+$ cat /proc/cpuinfo | grep "model name"
+model name      : Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz
+```
+
+-----
+
+### `/mnt` (Mount Directory)
+
+A temporary location where administrators can manually mount external storage devices (e.g., additional hard drives, network shares) for access.
+
+**Example Output:**
+
+```bash
+$ ls /mnt/
+backup_drive/  shared_folder/
+```
+
+-----
+
+### `/sys` (Virtual File System)
+
+Similar to `/proc`, this is a **virtual file system** that provides information about the kernel, hardware devices, and drivers.
+
+**Example Output:**
+
+```bash
+$ ls /sys/
+block/  bus/  class/  devices/  firmware/  fs/  kernel/  module/
+```
+
+-----
+
+### `/media` (Removable Devices)
+
+Used for the automatic mounting of removable storage media, such as USB drives, CDs, or DVDs.
+
+**Example Output:**
+
+```bash
+$ ls /media/
+siddhu/
+```
+
+-----
+
+### `/run` (Temporary File System)
+
+Stores runtime data used by system processes since the last boot. This data is non-persistent and is cleared on system reboot.
+
+**Example Output:**
+
+```bash
+$ ls /run/
+log/  media/  mount/  systemd/  user/
+```
+
+-----
+
+### `/tmp` (Temporary Files)
+
+Used by applications to store temporary files that are automatically deleted when the system is rebooted. Any user can write to this directory.
+
+**Example Output:**
+
+```bash
+$ ls /tmp/
+vmware-root/  kwinrc.tmp  systemd-private-e8674d8122...
+```
+
+-----
+
+### `/lost+found` (Recover Broken Files)
+
+A directory created during the recovery process after a system crash or improper shutdown. It contains recovered files that were part of the file system but became corrupted.
+
+**Example Output:**
+
+```bash
+$ ls /lost+found/
+# This directory is typically empty unless a file system check (fsck) is run.
+```
+
+-----
+
+### `/lib` (System Libraries)
+
+Stores shared libraries needed by the essential binaries in `/bin` and `/sbin`.
+
+**Example Output:**
+
+```bash
+$ ls /lib/
+aarch64-linux-gnu/  firmware/  systemd/  udev/
+```
+
+-----
+
+### `/srv` (Service Data Directory)
+
+Contains data for services provided by the system.
+**Example Output:**
+
+```bash
+$ ls /srv/
+www/  ftp/  git/
+```
