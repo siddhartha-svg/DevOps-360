@@ -3,6 +3,78 @@
 The Linux File System Hierarchy Standard (FHS) is a fundamental concept for anyone working with Linux. It provides a consistent and logical structure for storing system files, binaries, libraries, and user data. This guide serves as a quick reference for the most important directories.
 
 ---
+Based on the image you uploaded, here is the Linux file system hierarchy presented in a text-based graph format using Markdown. This is ideal for a GitHub `README.md` file.
+
+```markdown
+# 🌳 Linux File System Hierarchy
+
+```
+
+/
+├── boot/ (Boot Loader Files)
+│
+├── etc/ (Configuration Files)
+│
+├── home/ (User Home Directories)
+│
+├── root/ (Root Home Directory)
+│
+├── opt/ (Third-Party Applications)
+│
+├── dev/ (Device Files)
+│
+├── var/ (Variable Files)
+│
+├── bin/ (User Binaries)
+│
+├── sbin/ (System Binaries)
+│
+├── usr/ (User Applications)
+│
+├── proc/ (Process Information)
+│
+├── mnt/ (Mount Directory)
+│
+├── sys/ (Virtual File System)
+│
+├── media/ (Removable Devices)
+│
+├── run/ (Temporary File System)
+│
+├── tmp/ (Temporary Files)
+│
+├── lost+found/ (Recover Broken Files)
+│
+├── lib/ (System Libraries)
+│
+└── srv/ (Service Data Directory)
+
+```
+
+### Explanation of Directories
+
+* **`/` (Root):** The top-level directory from which all other directories and files branch.
+* **`/boot`:** Contains files needed to boot the system, such as the kernel and bootloader.
+* **`/etc`:** Stores system-wide configuration files.
+* **`/home`:** Houses individual user directories.
+* **`/root`:** The home directory for the `root` (superuser) user.
+* **`/opt`:** Contains optional, third-party software packages.
+* **`/dev`:** Holds special files representing hardware devices.
+* **`/var`:** Stores variable data that changes during system operation, such as log files and caches.
+* **`/bin`:** Contains essential user command binaries (e.g., `ls`, `cp`).
+* **`/sbin`:** Holds essential system binaries for administration (e.g., `reboot`, `fdisk`).
+* **`/usr`:** The largest directory, containing user-level applications and libraries.
+* **`/proc`:** A virtual file system providing real-time information about running processes.
+* **`/mnt`:** A temporary mount point for external file systems.
+* **`/sys`:** A virtual file system for interacting with hardware and kernel data.
+* **`/media`:** Used for the automatic mounting of removable devices.
+* **`/run`:** Stores runtime data for processes since the last boot.
+* **`/tmp`:** A directory for temporary files that are automatically deleted on reboot.
+* **`/lost+found`:** Holds recovered files from a file system check.
+* **`/lib`:** Stores essential shared libraries used by programs in `/bin` and `/sbin`.
+* **`/srv`:** Contains data for services offered by the system (e.g., web server data).
+```
+
 
 ### 🌳 Root and Core Directories
 
