@@ -6,7 +6,7 @@ The Linux File System Hierarchy Standard (FHS) is a fundamental concept for anyo
 Based on the image you uploaded, here is the Linux file system hierarchy presented in a text-based graph format using Markdown. This is ideal for a GitHub `README.md` file.
 
 ```markdown
-# 🌳 Linux File System Hierarchy
+🌳 Linux File System Hierarchy
 
 ```
 ```
