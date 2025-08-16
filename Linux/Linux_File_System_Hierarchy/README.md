@@ -9,6 +9,7 @@ Based on the image you uploaded, here is the Linux file system hierarchy present
 # 🌳 Linux File System Hierarchy
 
 ```
+```
 /
 ├── boot/ (Boot Loader Files)
 │
