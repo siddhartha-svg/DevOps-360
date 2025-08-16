@@ -9,7 +9,6 @@ Based on the image you uploaded, here is the Linux file system hierarchy present
 # 🌳 Linux File System Hierarchy
 
 ```
-
 /
 ├── boot/ (Boot Loader Files)
 │
@@ -48,7 +47,6 @@ Based on the image you uploaded, here is the Linux file system hierarchy present
 ├── lib/ (System Libraries)
 │
 └── srv/ (Service Data Directory)
-
 ```
 
 ### Explanation of Directories
