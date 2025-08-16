@@ -26,7 +26,7 @@ I maintain a **private GitLab notes repository** for:
 - Security hardening checklists
 
 🔒 _Private by default, but selected safe content is mirrored here:_
-📂 [Public DevOps Notes](https://github.com/<your-username>/devops-notes)
+📂 [Public DevOps Notes](https://github.com/siddhartha-svg/Docs)
 
 ---
 
