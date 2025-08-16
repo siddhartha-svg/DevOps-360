@@ -47,7 +47,7 @@ I maintain a **private GitLab notes repository** for:
 ---
 
 ## 📫 Connect With Me
-[LinkedIn](https://linkedin.com/in/your-linkedin) • [GitHub](https://github.com/<your-username>) • [Email](mailto:your@email.com)
+[LinkedIn](https://linkedin.com/in/netula-siddhartha-yadav-8b58851a6/) • [GitHub](https://github.com/siddhartha-svg) • [Email](mailto:netulasiddhartha129@gmail.com)
 
 ---
 
