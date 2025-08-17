@@ -1,6 +1,6 @@
 # 👋 Hi, I'm Netula Siddhartha Yadav 
 
-🚀 **DevOps Engineer | Cloud Enthusiast | Automation Lover**  
+🚀 **Data DevOps Engineer | Cloud Enthusiast | Automation Lover  |Exploring MLOPS**  
 💡 Passionate about building scalable, secure, and automated infrastructure.  
 📍 Based in Hyderabad | 🌐 Open to remote opportunities  
 
