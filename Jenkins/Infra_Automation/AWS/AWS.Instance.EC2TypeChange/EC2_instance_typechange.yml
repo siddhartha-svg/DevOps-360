@@ -1,0 +1,10 @@
+---
+  - hosts: current
+    gather_facts: true
+    become: true
+    become_method: pbrun
+    become_user: root
+    become_flags: '-p'
+    roles:
+      - EC2_INSTANCETYPE_CHANGE
+...
