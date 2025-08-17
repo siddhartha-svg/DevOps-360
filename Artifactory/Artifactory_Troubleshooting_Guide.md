@@ -1,5 +1,3 @@
-HTTP status codes and common errors in Artifactory, NPM, Maven, and Docker can be tricky to troubleshoot. Here's a Markdown-formatted guide for a GitHub README that simplifies the process, using a generalized format without specific company names.
-
 ### **Artifactory Troubleshooting Guide**
 
 This document provides a guide for troubleshooting common issues with Artifactory, including HTTP status codes, Docker, NPM, and Maven errors, as well as general access and replication problems.
