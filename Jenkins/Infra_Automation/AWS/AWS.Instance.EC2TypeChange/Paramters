@@ -1,0 +1,7 @@
+{
+  "Cur_DNS": "${Cur_DNS}",
+  "NewInstanceType": "${NewInstanceType}",
+  "Region": "${Region}",
+  "jenkinsuser": "${jenkinsuser}",
+  "jenkinspassword": "{$jenkinspassword}"
+}
