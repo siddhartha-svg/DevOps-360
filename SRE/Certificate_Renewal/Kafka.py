@@ -500,3 +500,19 @@ The AI summary is generated to be human readable and limited (prompt asks for MA
 8) Fallback & safety
 
 If LLaMA model is not present or fails to load, the script uses a rule-based analyzer to still attempt restarts for common cases (bind errors, connection refu
+
+
+
+# Update system
+sudo dnf update -y
+
+# Install development tools and dependencies
+sudo dnf groupinstall -y "Development Tools"
+sudo dnf install -y python3-devel openssl-devel make cmake gcc-c++ git python3-pip libstdc++-devel
+
+# Install OpenMP support
+sudo dnf install -y libgomp
+
+# Upgrade pip and install packages
+sudo pip3 install --upgrade pip
+pip3 install llama-cpp-python paramiko psutil
