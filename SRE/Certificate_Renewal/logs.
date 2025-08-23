@@ -1,0 +1,33 @@
+root@tpaldey2va028:/etc/systemd/system # sudo systemctl daemon-reload
+sudo systemctl enable --now cluster_monitor_ai.service
+sudo journalctl -u cluster_monitor_ai.service -f
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com python3[3162495]:   File "/opt/kafka-ai/cluster_monitor_ai.py", line 52, in <module>
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com python3[3162495]:     os.makedirs(LOG_DIR, exist_ok=True)
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com python3[3162495]:   File "/usr/lib64/python3.9/os.py", line 225, in makedirs
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com python3[3162495]:     mkdir(name, mode)
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com python3[3162495]: PermissionError: [Errno 13] Permission denied: '/opt/kafka-ai/collected_logs'
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Main process exited, code=exited, status=1/FAILURE
+Aug 23 06:45:41 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Failed with result 'exit-code'.
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Scheduled restart job, restart counter is at 55.
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com systemd[1]: Stopped Kafka/ZK AI Cluster Monitor.
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com systemd[1]: Started Kafka/ZK AI Cluster Monitor.
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com python3[3162948]: Traceback (most recent call last):
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com python3[3162948]:   File "/opt/kafka-ai/cluster_monitor_ai.py", line 52, in <module>
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com python3[3162948]:     os.makedirs(LOG_DIR, exist_ok=True)
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com python3[3162948]:   File "/usr/lib64/python3.9/os.py", line 225, in makedirs
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com python3[3162948]:     mkdir(name, mode)
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com python3[3162948]: PermissionError: [Errno 13] Permission denied: '/opt/kafka-ai/collected_logs'
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Main process exited, code=exited, status=1/FAILURE
+Aug 23 06:45:56 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Failed with result 'exit-code'.
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Scheduled restart job, restart counter is at 56.
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com systemd[1]: Stopped Kafka/ZK AI Cluster Monitor.
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com systemd[1]: Started Kafka/ZK AI Cluster Monitor.
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com python3[3163378]: Traceback (most recent call last):
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com python3[3163378]:   File "/opt/kafka-ai/cluster_monitor_ai.py", line 52, in <module>
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com python3[3163378]:     os.makedirs(LOG_DIR, exist_ok=True)
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com python3[3163378]:   File "/usr/lib64/python3.9/os.py", line 225, in makedirs
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com python3[3163378]:     mkdir(name, mode)
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com python3[3163378]: PermissionError: [Errno 13] Permission denied: '/opt/kafka-ai/collected_logs'
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Main process exited, code=exited, status=1/FAILURE
+Aug 23 06:46:11 tpaldey2va028.ebiz.verizon.com systemd[1]: cluster_monitor_ai.service: Failed with result 'exit-code'.
+
