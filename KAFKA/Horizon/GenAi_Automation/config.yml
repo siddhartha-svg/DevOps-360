@@ -1,0 +1,138 @@
+# Kafka/Zookeeper Monitor Configuration
+# Based on your Verizon environment setup
+
+# Server and service definitions
+servers:
+  - host: "tpaldey2va028.ebiz.verizon.com"
+    services:
+      - name: "zookeeper"
+        port: 2181
+        systemd_name: "zookeeper.service"
+        log_file: "/opt/app/KAFKA/kafka_2.12-3.1.1/logs/zookeeper.out"
+      - name: "kafka"
+        port: 9092
+        systemd_name: "kafka.service"
+        log_file: "/opt/app/KAFKA/kafka_2.12-3.1.1/logs/server.log"
+        
+  - host: "tpaldey2va029.ebiz.verizon.com"
+    services:
+      - name: "zookeeper"
+        port: 2181
+        systemd_name: "zookeeper.service"
+        log_file: "/opt/app/KAFKA/kafka_2.12-3.1.1/logs/zookeeper.out"
+      - name: "kafka"
+        port: 9092
+        systemd_name: "kafka.service"
+        log_file: "/opt/app/KAFKA/kafka_2.12-3.1.1/logs/server.log"
+        
+  - host: "tpaldey2va030.ebiz.verizon.com"
+    services:
+      - name: "zookeeper"
+        port: 2181
+        systemd_name: "zookeeper.service"
+        log_file: "/opt/app/KAFKA/kafka_2.12-3.1.1/logs/zookeeper.out"
+      - name: "kafka"
+        port: 9092
+        systemd_name: "kafka.service"
+        log_file: "/opt/app/KAFKA/kafka_2.12-3.1.1/logs/server.log"
+
+# Monitoring configuration
+monitoring:
+  check_interval_seconds: 60        # How often to check services
+  log_lines_to_analyze: 500        # Number of log lines to analyze
+  max_restart_attempts: 3          # Maximum restart attempts per service
+  restart_wait_time: 15            # Seconds to wait after restart before checking
+  min_failure_interval: 5          # Minutes between handling same failure
+  restart_cooldown_minutes: 30     # Minutes before resetting restart attempts
+
+# AI Analysis configuration (Local Ollama only)
+ai:
+  ollama_url: "http://localhost:11434"
+  model: "llama3:8b"               # You can use llama2:7b, codellama:7b, etc.
+  enable_ai_analysis: true
+  analysis_timeout_seconds: 120
+
+# Email notification settings
+email:
+  smtp_server: "vzsmtp.verizon.com"
+  smtp_port: 25
+  from_email: "netula.siddhartha.yadav@verizon.com"
+  to_emails:
+    - "netula.siddhartha.yadav@verizon.com"
+    # Add more team members as needed
+    # - "team-member2@verizon.com"
+    # - "on-call@verizon.com"
+  
+  # Email preferences
+  send_recovery_notifications: true
+  send_daily_reports: true
+  daily_report_time: "09:00"       # 24-hour format
+  include_logs_in_email: true
+  max_log_lines_in_email: 100
+
+# Logging configuration
+logging:
+  directory: "/opt/kafka-monitor/logs"
+  level: "INFO"                    # DEBUG, INFO, WARNING, ERROR
+  max_file_size_mb: 10
+  backup_count: 5
+  log_rotation: true
+
+# Advanced settings
+advanced:
+  ssh_timeout_seconds: 30
+  port_check_timeout_seconds: 5
+  enable_cluster_coordination: false  # Set to true for multi-server coordination
+  health_check_retries: 3
+  
+# Cluster coordination (for future multi-server setup)
+cluster:
+  server_id: "server1"             # Unique ID for this server
+  coordination_port: 8765          # Port for inter-server communication
+  is_primary: true                 # Primary server handles most operations
+  servers:
+    - id: "server1"
+      host: "tpaldey2va028.ebiz.verizon.com"
+      port: 8765
+      is_primary: true
+    - id: "server2"  
+      host: "tpaldey2va029.ebiz.verizon.com"
+      port: 8765
+      is_primary: false
+    - id: "server3"
+      host: "tpaldey2va030.ebiz.verizon.com"
+      port: 8765
+      is_primary: false
+
+# Service-specific settings
+service_settings:
+  kafka:
+    startup_time_seconds: 30       # Time to wait for Kafka to fully start
+    dependency_services: ["zookeeper"]
+    critical_keywords:
+      - "OutOfMemoryError"
+      - "BindException"
+      - "Connection refused"
+      - "Unable to connect to ZooKeeper"
+      
+  zookeeper:
+    startup_time_seconds: 15       # Time to wait for Zookeeper to fully start
+    dependency_services: []
+    critical_keywords:
+      - "Unable to load database"
+      - "Session 0x0 for server null"
+      - "QuorumPeerMain"
+      - "Election exception"
+
+# Thresholds and alerting
+thresholds:
+  service_down_alert_delay_minutes: 2    # Wait before sending first alert
+  repeated_failure_threshold: 3          # Failures before escalating
+  cluster_failure_threshold: 2           # Failed services before cluster alert
+
+# Templates directory
+templates:
+  directory: "/opt/kafka-monitor/templates"
+  failure_template: "failure_alert.html"
+  recovery_template: "recovery_notification.html"
+  daily_report_template: "daily_report.html"
