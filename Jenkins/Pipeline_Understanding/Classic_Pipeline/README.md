@@ -7,7 +7,10 @@ This is not a Freestyle project or Multibranch pipeline — it's a standalone pi
 
 > New Item > Pipeline
 
-This kind of pipeline allows you to write Groovy-based scripts directly in the UI or reference them from SCM (e.g., Git). It is ideal for defining custom CI/CD workflows.
+```
+This kind of pipeline allows you to write Groovy-based scripts directly in the UI or reference them from SCM (e.g., Git). 
+It is ideal for defining custom CI/CD workflows.
+```
 
 ## 🔍 Sections Explained:
 
@@ -132,7 +135,7 @@ Script Path Jenkinsfile or a custom name
 
 
 ### 💡 Summary
-
+```
 Feature Details
 
 Type Pipeline Project (Declarative or Scripted)
@@ -140,4 +143,5 @@ UI Configuration Sections General, Triggers, Pipeline, Advanced
 Common Use Case Customized CI/CD workflows for individual projects
 Script Language Groovy (Declarative preferred)
 Flexibility High (stages, agents, conditions, parallel builds, etc.)
+```
 ────────────────────────────────────────────────────────────────────
