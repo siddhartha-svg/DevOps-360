@@ -15,7 +15,7 @@ This kind of pipeline allows you to write Groovy-based scripts directly in the U
 
 Section Purpose
 
-❶General Set the name, description, enable/discard old builds, etc.
+### ❶ General Set the name, description, enable/discard old builds, etc.
 ① Jira site : Jira Site URL  
    Enable project-based security : Inherit permissions from Parent ACL : If we use this feature we get can give access respective people 
 ② GitLab Connection : Connection of Gitlab in build permnissions it shows $Gitlab-Prod$
