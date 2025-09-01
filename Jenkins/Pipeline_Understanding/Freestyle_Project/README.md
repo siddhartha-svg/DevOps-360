@@ -5,7 +5,7 @@ A Freestyle project is the most fundamental and flexible job type in Jenkins. It
 
 **Features Explained:**
 
-❶General : Set project name, description, and discard old builds.
+### ❶General : Set project name, description, and discard old builds.
 ① Jira site : Jira Site URL  
    Enable project-based security : Inherit permissions from Parent ACL : If we use this feature we get can give access respective people 
 ② GitLab Connection : Connection of Gitlab in build permnissions it shows $Gitlab-Prod$
@@ -30,7 +30,7 @@ A Freestyle project is the most fundamental and flexible job type in Jenkins. It
 ⑥ 
 ⑦ 
 ⑧
-❸Build Triggers  : Specify triggers (e.g., Poll SCM, cron jobs, GitHub webhook).
+### ❸Build Triggers  : Specify triggers (e.g., Poll SCM, cron jobs, GitHub webhook).
 ① Build periodically with parameters : 
   Schedule :
   $0 */2 * * * %ENV=ST1CON$ {It means that Based on Build with parameters if ENV name and ST1CON choice is would be trigger based on give timeline}  
@@ -41,7 +41,7 @@ A Freestyle project is the most fundamental and flexible job type in Jenkins. It
 ⑥ 
 ⑦ 
 ⑧
-❹Build Environment : Set up environment variables, credentials, wrappers, etc.
+### ❹Build Environment : Set up environment variables, credentials, wrappers, etc.
 ① Delete workspace before build starts : 
   If you're triggering any build it will delete everything in workspace of jenkins and it will trigger fresh Build 
 ② Set Build Name : 
@@ -56,7 +56,7 @@ A Freestyle project is the most fundamental and flexible job type in Jenkins. It
 ⑦ 
 ⑧
 
-❺Build Steps : Add build commands (e.g., Execute Shell, Invoke Ant).
+### ❺Build Steps : Add build commands (e.g., Execute Shell, Invoke Ant).
 ① Execute shell :
   You can Add shell script in the box 
 ② Inject environment variables :
@@ -131,7 +131,7 @@ Why? You’re targeting specific dynamic IPs during runtime.}
 ⑦ 
 ⑧
 
-❻Post-build Actions : Define actions like email notifications, archiving artifacts, etc.
+### ❻Post-build Actions : Define actions like email notifications, archiving artifacts, etc.
 ① 
 ②
 ③ 
