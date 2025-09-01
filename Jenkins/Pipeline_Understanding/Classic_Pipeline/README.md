@@ -1,9 +1,7 @@
 
 ────────────────📁Classic Pipeline Job📁────────────────────
 
-① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
-
-# ✅ Pipeline Project (Classic Pipeline Job)
+## ✅ Pipeline Project (Classic Pipeline Job)
 
 This is not a Freestyle project or Multibranch pipeline — it's a standalone pipeline job created using:
 
@@ -15,20 +13,20 @@ This kind of pipeline allows you to write Groovy-based scripts directly in the U
 
 Section Purpose
 
-### ❶ General Set the name, description, enable/discard old builds, etc.
-① Jira site : Jira Site URL  
+###  General Set the name, description, enable/discard old builds, etc.
+### Jira site : Jira Site URL  
    Enable project-based security : Inherit permissions from Parent ACL : If we use this feature we get can give access respective people 
-② GitLab Connection : Connection of Gitlab in build permnissions it shows $Gitlab-Prod$
+###  GitLab Connection : Connection of Gitlab in build permnissions it shows $Gitlab-Prod$
    Use alternative credential : 
    Credential : $UP_GITLAB_TOKEN$ { we can use token which generally gotlab can access with this }
-③ Discard old builds : Strategy 
+###  Discard old builds : Strategy 
  Log Rotation -
  Days to keep builds : $20$ {Past from how many days need to keep} 
  Max # of builds to keep : $20$ {Jenkins number of builds to keep}
  
-④ Do not allow Concurrent builds : { If we click on it ,one instance of this job can run at any given time. }
+###  Do not allow Concurrent builds : { If we click on it ,one instance of this job can run at any given time. }
  
-⑤ This project is parameterized :
+###  This project is parameterized :
    String parameter : 
    Name : depCheck 
    Default Value :  true   
@@ -40,13 +38,13 @@ Section Purpose
   
  
 ## ❷Triggers Define when the pipeline should run (e.g., Poll SCM, GitHub hook trigger).
-① Build when a change is pushed to GitLab. GitLab webhook URL:
+###  Build when a change is pushed to GitLab. GitLab webhook URL:
   https://jenkins-vcg1.vpc.verizon.com/vcg1/project/VZW.UNIFIED.CICD/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_PIPELINE/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_main/VZW.UPE.EY2V_JITRUSAGEBROKER.JITR-VT-USAGE-INQUIRY-EUREKA
-② Enabled GitLab triggers :
+###  Enabled GitLab triggers :
   Push Events :Click on it 
   
 
-❸Pipeline Core section where you configure: <br>• Definition: Choose "Pipeline script" (inline) or "Pipeline script from SCM"<br>• Script or Jenkinsfile: Define your CI/CD process in Groovy syntax.
+## Pipeline Core section where you configure: <br>• Definition: Choose "Pipeline script" (inline) or "Pipeline script from SCM"<br>• Script or Jenkinsfile: Define your CI/CD process in Groovy syntax.
 Definition : 
 Pipeline Script :
  Script :
@@ -89,12 +87,12 @@ mediator
         }
           }
 ```
-❹Advanced Hidden by default. Used to configure custom quiet periods, retry counts, custom workspace, etc. Usually optional.
+### Advanced Hidden by default. Used to configure custom quiet periods, retry counts, custom workspace, etc. Usually optional.
 
 
----
 
-✅ Example Configurations
+
+## ✅ Example Configurations
 
 Option 1: Pipeline Script (inline)
 
@@ -132,7 +130,6 @@ Credentials Optional
 Branch e.g., */main
 Script Path Jenkinsfile or a custom name
 
----
 
 ### 💡 Summary
 
