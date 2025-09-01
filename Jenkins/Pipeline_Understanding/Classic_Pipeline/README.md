@@ -1,9 +1,9 @@
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-──────────────────────────────📁Classic Pipeline Job📁──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+───────────────────────────📁Classic Pipeline Job📁──────────────────────────────────────────────────────────
 
 ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳
 
-✅ Pipeline Project (Classic Pipeline Job)
+# ✅ Pipeline Project (Classic Pipeline Job)
 
 This is not a Freestyle project or Multibranch pipeline — it's a standalone pipeline job created using:
 
@@ -11,7 +11,7 @@ This is not a Freestyle project or Multibranch pipeline — it's a standalone pi
 
 This kind of pipeline allows you to write Groovy-based scripts directly in the UI or reference them from SCM (e.g., Git). It is ideal for defining custom CI/CD workflows.
 
-🔍 Sections Explained:
+## 🔍 Sections Explained:
 
 Section Purpose
 
@@ -39,7 +39,7 @@ Section Purpose
    
   
  
-❷Triggers Define when the pipeline should run (e.g., Poll SCM, GitHub hook trigger).
+## ❷Triggers Define when the pipeline should run (e.g., Poll SCM, GitHub hook trigger).
 ① Build when a change is pushed to GitLab. GitLab webhook URL:
   https://jenkins-vcg1.vpc.verizon.com/vcg1/project/VZW.UNIFIED.CICD/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_PIPELINE/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_main/VZW.UPE.EY2V_JITRUSAGEBROKER.JITR-VT-USAGE-INQUIRY-EUREKA
 ② Enabled GitLab triggers :
@@ -50,6 +50,7 @@ Section Purpose
 Definition : 
 Pipeline Script :
  Script :
+ ```
  {
  @Library('unifiedPipeline') _
 def repo
@@ -87,7 +88,7 @@ mediator
            gitGroupName = "EY2V_JITRUSAGEBROKER"
         }
           }
-
+```
 ❹Advanced Hidden by default. Used to configure custom quiet periods, retry counts, custom workspace, etc. Usually optional.
 
 
