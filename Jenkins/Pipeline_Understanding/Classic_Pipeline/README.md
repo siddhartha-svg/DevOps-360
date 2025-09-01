@@ -46,7 +46,6 @@ Section Purpose
 ## ❷Triggers Define when the pipeline should run (e.g., Poll SCM, GitHub hook trigger).
 
 ###  Build when a change is pushed to GitLab. GitLab webhook URL:
-  https://jenkins-vcg1.vpc.verizon.com/vcg1/project/VZW.UNIFIED.CICD/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_PIPELINE/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_main/VZW.UPE.EY2V_JITRUSAGEBROKER.JITR-VT-USAGE-INQUIRY-EUREKA
   
 ###  Enabled GitLab triggers :
   Push Events :Click on it 
