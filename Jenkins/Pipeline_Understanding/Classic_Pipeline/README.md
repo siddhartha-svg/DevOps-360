@@ -92,25 +92,6 @@ mediator
 ❹Advanced Hidden by default. Used to configure custom quiet periods, retry counts, custom workspace, etc. Usually optional.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 ✅ Example Configurations
