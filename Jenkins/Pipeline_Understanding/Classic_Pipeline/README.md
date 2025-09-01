@@ -16,7 +16,7 @@ It is ideal for defining custom CI/CD workflows.
 
 Section Purpose
 
-####  General Set the name, description, enable/discard old builds, etc.
+### General Set the name, description, enable/discard old builds, etc.
 ### Jira site : Jira Site URL  
    Enable project-based security : Inherit permissions from Parent ACL : If we use this feature we get can give access respective people 
 ###  GitLab Connection : Connection of Gitlab in build permnissions it shows $Gitlab-Prod$
