@@ -17,11 +17,14 @@ It is ideal for defining custom CI/CD workflows.
 Section Purpose
 
 ### General Set the name, description, enable/discard old builds, etc.
+
 ### Jira site : Jira Site URL  
    Enable project-based security : Inherit permissions from Parent ACL : If we use this feature we get can give access respective people 
+   
 ###  GitLab Connection : Connection of Gitlab in build permnissions it shows $Gitlab-Prod$
    Use alternative credential : 
    Credential : $UP_GITLAB_TOKEN$ { we can use token which generally gotlab can access with this }
+   
 ###  Discard old builds : Strategy 
  Log Rotation -
  Days to keep builds : $20$ {Past from how many days need to keep} 
@@ -41,8 +44,10 @@ Section Purpose
   
  
 ## ❷Triggers Define when the pipeline should run (e.g., Poll SCM, GitHub hook trigger).
+
 ###  Build when a change is pushed to GitLab. GitLab webhook URL:
   https://jenkins-vcg1.vpc.verizon.com/vcg1/project/VZW.UNIFIED.CICD/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_PIPELINE/VZW.UPE.EY2V_JITRUSAGEBROKER.CI_main/VZW.UPE.EY2V_JITRUSAGEBROKER.JITR-VT-USAGE-INQUIRY-EUREKA
+  
 ###  Enabled GitLab triggers :
   Push Events :Click on it 
   
