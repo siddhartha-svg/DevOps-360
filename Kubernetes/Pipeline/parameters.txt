@@ -1,0 +1,884 @@
+Skip to content
+[Jenkins]Jenkins
+
+2
+Siddhartha Yadav, Netula
+
+log out
+Dashboard
+VZW.UNIF.CICD.PIPELINES
+VZW.UNIF.CICD.DEPLOYMENT.PIPELINES-PROD
+VZW.UNIF.EKS_DEPLOYMENT.PIPELINE-OCP
+Configuration
+Configure
+
+General
+
+Triggers
+
+Pipeline
+
+Advanced
+
+General
+
+Description
+N/A
+Jira site
+https://onejira.verizon.com/
+
+Enable project-based security
+
+Block build if certain jobs are running
+?
+
+Discard old builds
+?
+Strategy
+
+Log Rotation
+Days to keep builds
+if not empty, build records are only kept up to this number of days
+60
+Max # of builds to keep
+if not empty, only up to this number of build records are kept
+200
+Advanced
+Edited
+
+Do not Scan failed builds
+?
+
+Do not allow concurrent builds
+
+Do not allow the pipeline to resume if the controller restarts
+
+GitHub project
+GitLab Connection
+Gitlab-Prod
+
+Use alternative credential
+
+Use default Jenkins load balancer
+?
+
+Notify when Job configuration changes
+
+Permission to Copy Artifact
+
+Delivery Pipeline configuration
+
+Pipeline speed/durability override
+?
+
+Preserve stashes from completed builds
+?
+
+Provide alternate Labels for Build Links and Buttons
+Rebuild options:
+?
+
+Rebuild Without Asking For Parameters
+
+Disable Rebuilding for this job
+
+Restrict build execution causes
+?
+
+Sidebar Links
+?
+
+This project is parameterized
+?
+Active Choices Reactive Parameter
+?
+Name
+GIT_GROUP
+Script
+Groovy Script
+?
+Script
+Groovy Script
+return ["IIPV-ELVIS","iipv_billing_profile_service"]
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+N/A
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+DEPLOY_ENV
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(GIT_GROUP.contains('HIVV_SOE')){
+return["CANARY",'CANARYE','CANARYW',"PRODE","PRODW","STG","TRNG","TRNB"]
+}
+else 
+{
+return["CANARY",'CANARYE','CANARYW',"PREPROD","PROD","PRODE","PRODW","TRNG","TRNB","TRNW","STG"]
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+GIT_GROUP
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+SOURCE_ENV
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(DEPLOY_ENV == 'CANARY'){
+return["SITB","SITG","CANARY"]
+}
+if(DEPLOY_ENV == 'CANARYE'){
+return["SITB","SITG","CANARY"]
+}
+if(DEPLOY_ENV == 'CANARYW'){
+return["SITB","SITG","CANARY"]
+}
+if(DEPLOY_ENV == 'PREPROD'){
+return["SITB","SITG","PREPROD"]
+}
+if(DEPLOY_ENV.contains('STG')){
+return["PRODE","CANARY","STG"]
+}
+if(DEPLOY_ENV.contains('TRN')){
+return["PRODW","PRODE","TRNB","TRNG"]
+}
+
+else if(DEPLOY_ENV.contains('PROD')){
+ return["SITB","SITG","CANARY",'CANARYW','CANARYE',"PREPROD","PRODE","PRODW","DIT"]
+}
+
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+DEPLOY_ENV
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+ENVIRONMENT_NAME
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(SOURCE_ENV.contains("SIT")){
+ return["T1","T2","T3:selected","T4","T5","T6","T7"]
+}
+else if(SOURCE_ENV.contains("CANARY")){
+ return["CANARY"]
+}
+else if(SOURCE_ENV.contains("PREPROD")){
+ return["PREPROD"]
+}
+else if(SOURCE_ENV.contains("PRODE")){
+ return["PRODE"]
+}
+else if(SOURCE_ENV.contains("PRODW")){
+ return["PRODW"]
+}
+else if(SOURCE_ENV.contains("STG")){
+ return["STG"]
+}
+else if(SOURCE_ENV.contains("TRN")){
+ return["TRN"]
+}
+else if(SOURCE_ENV.contains("DIT")){
+ return["T1","T2","T3:selected","T4","T5","T6","T7"]
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+SOURCE_ENV
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+STAGES
+Script
+Groovy Script
+?
+Script
+Groovy Script
+return["ALL","DEPLOY_APP_CONFIG_ONLY","DEPLOY_GLOBAL_CONFIG_ONLY","DEPLOY_SECRET_ONLY"]
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+N/A
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+DEPLOY_TYPE
+Script
+Groovy Script
+?
+Script
+Groovy Script
+return["EKS"]
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+N/A
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+VSAD
+Script
+Groovy Script
+?
+Script
+Groovy Script
+return["IIPV"]
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+N/A
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+TRIGGER_TYPE
+Script
+Groovy Script
+?
+Script
+Groovy Script
+return["ADHOC"]
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+N/A
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+RELEASE_BRANCH
+Script
+Groovy Script
+?
+Script
+Groovy Script
+return["main"]
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+N/A
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+SKIP_ARTIFACT_STAGING
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(STAGES == 'DEPLOY_GLOBAL_CONFIG_ONLY'){
+return["true"]
+}
+else if(STAGES == 'DEPLOY_SECRET_ONLY'){
+return["true"]
+}
+else if(STAGES == 'DEPLOY_APP_CONFIG_ONLY'){
+return["true"]
+}
+else if(DEPLOY_ENV == 'CANARY' && SOURCE_ENV == 'CANARY'){
+ return["false","true"]
+}
+else if(STAGES  == "ALL"){
+return["false:selected","true"]
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+STAGES,DEPLOY_ENV,SOURCE_ENV
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+SKIP_GLOBAL_CONFIG_STAGE
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(STAGES == 'DEPLOY_GLOBAL_CONFIG_ONLY'  ){
+ return["false"]
+}
+else if(STAGES == 'DEPLOY_APP_CONFIG_ONLY'){
+return["true"]
+}
+else if(STAGES == 'DEPLOY_SECRET_ONLY'){
+return["true"]
+}
+else{
+return["true","false:selected"]
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+STAGES
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Parameter
+?
+Name
+SKIP_GLOBAL_SECRET_STAGE
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(STAGES == 'DEPLOY_GLOBAL_CONFIG_ONLY'  ){
+ return["true"]
+}
+else if(STAGES == 'DEPLOY_APP_CONFIG_ONLY'){
+return["true"]
+}
+else if(STAGES == 'DEPLOY_SECRET_ONLY'){
+return["false"]
+}
+else{
+return["true","false:selected"]
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Single Select
+Referenced parameters
+?
+STAGES
+
+Enable filters
+?
+Filter starts at
+?
+1
+Active Choices Reactive Reference Parameter
+?
+Name
+PROJECT_CATEGORY
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(TRIGGER_TYPE == "ADHOC"){
+return '<input type="text" class=" \" name="value" value=\'NA\'>'
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Formatted HTML
+Referenced parameters
+?
+TRIGGER_TYPE
+Advanced
+String Parameter
+?
+Name
+?
+DEPLOY_ZONE
+Default Value
+?
+NA
+Description
+?
+N/A
+
+Trim the string
+?
+String Parameter
+?
+Name
+?
+DEPLOY_APP_FLAG
+Default Value
+?
+OCP
+Description
+?
+N/A
+
+Trim the string
+?
+Active Choices Reactive Reference Parameter
+?
+Name
+IOT_DEPLOY
+Script
+Groovy Script
+?
+Script
+Groovy Script
+if(TRIGGER_TYPE == "ADHOC"){
+return '<input type="text" class=" \" name="value" value=\'False\'>'
+}
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Fallback Script
+Groovy Script
+N/A
+
+Use Groovy Sandbox
+?
+Additional classpath
+?
+Add entry
+Scriptler Script
+Description
+?
+N/A
+Choice Type
+
+Formatted HTML
+Referenced parameters
+?
+TRIGGER_TYPE
+Advanced
+String Parameter
+?
+Name
+?
+NOAPIGEE_FLAG
+Default Value
+?
+FALSE
+Description
+?
+Select false for apigee & true for webserver... NOTE: json also needs to be true for webserver
+
+Trim the string
+?
+
+Throttle Concurrent Builds
+
+Throttle builds
+?
+
+Prepare an environment for the run
+?
+Job config history change message
+?
+N/A
+Triggers
+Set up automated actions that start your build based on specific events, like code changes or scheduled times.
+
+Build after other projects are built
+?
+
+Build periodically
+?
+
+Build periodically with parameters
+?
+
+Build when a change is pushed to BitBucket
+
+Build when a change is pushed to GitLab. GitLab webhook URL: https://jenkins-vcg5.vpc.verizon.com/vcg5/project/VZW.UNIF.CICD.PIPELINES/VZW.UNIF.CICD.DEPLOYMENT.PIPELINES-PROD/VZW.UNIF.EKS_DEPLOYMENT.PIPELINE-OCP
+?
+
+Build when a comment is added to JIRA
+?
+
+Build when an issue is updated in JIRA
+?
+
+Build when another project is promoted
+
+Deploy periodically
+?
+
+Enable Artifactory trigger
+
+Generic Webhook Trigger
+?
+
+GitHub hook trigger for GITScm polling
+?
+
+Poll Mailbox Trigger
+?
+
+Poll SCM
+?
+
+[FSTrigger] - Monitor files
+?
+
+[FSTrigger] - Monitor folder
+?
+
+[URLTrigger] - Poll with a URL
+?
+
+Customize New Relic build event settings
+?
+
+Trigger builds remotely (e.g., from scripts)
+?
+Pipeline
+Define your Pipeline using Groovy directly or pull it from source control.
+Definition
+
+Pipeline script
+Script
+?
+//@Library("unifiedPipeline@deploy_master_prod_yzhost") _
+
+@Library("unifiedPipeline@deploy_master_prod") _
+//@Library("unifiedPipeline@deploy_master_prod_bkp_02262024") _
+//deploymentWrapper {
+    
+//}
+eksProdDeploymentMediator{
+    
+}
+
+try sample Pipeline...
+
+Use Groovy Sandbox
+?
+Pipeline Syntax
+Advanced
+Advanced
+ Help us localize this page
+REST API
+Jenkins 2.492.3
