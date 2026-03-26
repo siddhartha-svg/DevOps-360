@@ -18,7 +18,7 @@ Artifactory is a tool that **stores and manages software packages/artifacts** (l
   ```
 - **Example:**
   ```
-  https://oneartifactoryci.verizon.com/artifactory/ev6v-cxp-browsing-services-maven-dev/
+  https://oneartifactoryci.horizon.com/artifactory/ev6v-cxp-browsing-services-maven-dev/
   ```
 
 ---
