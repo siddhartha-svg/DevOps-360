@@ -18,7 +18,7 @@ Artifactory is a tool that **stores and manages software packages/artifacts** (l
   ```
 - **Example:**
   ```
-  https://oneartifactoryci.horizon.com/artifactory/ev6v-cxp-browsing-services-maven-dev/
+  https://oneartifactoryci.verizon.com/artifactory/ev6v-cxp-browsing-services-maven-dev/
   ```
 
 ---
@@ -78,6 +78,47 @@ ev6v-cxp-browsing-services-maven-dev
 - Full control over what packages/versions are accessible.
 - Easy to add/remove underlying repositories without changing developer configurations.
 
+**Naming Standard:**
+```
+<projectKey/team>-<tech>-<maturity>
+```
+
+| Name Part | Description |
+|---|---|
+| `<projectKey/team>` | A group that shares read permissions. If using virtual write control, manage at the write permission level. |
+| `<tech>` | The package type (e.g., docker, maven, npm). |
+| `<maturity>` | Optional. Used for write-control and/or production environments. Controlled from a **deployment model** perspective, not CI. |
+
+**Examples:**
+```
+rtfact-docker-dev
+tiger-docker-prod
+bank32-docker-dev-virtual
+```
+
+**Real Example — `bank32-docker-dev-virtual`:**
+```
+bank32-docker-dev-virtual
+│     │      │    │
+│     │      │    └── Type    : virtual
+│     │      └─────── Maturity: dev
+│     └────────────── Tech    : docker
+└──────────────────── Project : bank32
+```
+
+**Virtual Repository Configuration (as seen in JFrog UI):**
+
+| Setting | Value |
+|---|---|
+| Repository Key | `bank32-docker-dev-virtual` |
+| Environments | `DEV`, `PROD` |
+| Repository Layout | `simple-default` |
+| Selected Repositories | `bank32-docker-local`, `bank32-docker-dev-remote` |
+
+**Included Repositories (Resolution Order):**
+1. `bank32-docker-local` ← Checked first (Federated/Local)
+2. `bank32-docker-dev-remote` ← Checked second (Remote cache → internet)
+
 ---
 
 ## Quick Comparison Table
@@ -118,8 +159,12 @@ Developer requests a package
 
 ## Key Takeaway
 
-| Repo Type | Simple Definition |
-|---|---|
-| **Federated** | Your own artifact storage, synced globally |
-| **Remote** | Smart cache for external/public packages |
-| **Virtual** | One URL that searches across all repos |
+| Repo Type | Simple Definition | Naming Convention |
+|---|---|---|
+| **Federated** | Your own artifact storage, synced globally | `<VSAD>-<Project>-<PackageType>-<Environment>` |
+| **Remote** | Smart cache for external/public packages | `<VSAD>-<Project>-<PackageType>-<Environment>-remote` |
+| **Virtual** | One URL that searches across all repos | `<projectKey/team>-<tech>-<maturity>` |
+
+> **Naming Examples:**
+> - Federated: `ev6v-cxp-browsing-services-maven-dev`
+> - Virtual: `bank32-docker-dev-virtual`, `rtfact-docker-dev`, `tiger-docker-prod`
