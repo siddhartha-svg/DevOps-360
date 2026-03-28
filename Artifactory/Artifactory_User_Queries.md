@@ -1,7 +1,7 @@
 # Artifactory User Queries — Complete Troubleshooting Guide
 
-> **Author:** Rajagopal, Vijayakumar  
-> **Last Updated:** Feb 22, 2025  
+> **Author:** Netula Siddhartha Yadav
+> **Last Updated:** Feb 22, 2026
 > **Read Time:** ~6 minutes
 
 ---
